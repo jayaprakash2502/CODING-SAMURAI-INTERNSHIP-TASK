@@ -21,7 +21,7 @@ h1{
 .inputs input,.inputs select,.inputs button{
     padding: 10px;
     margin: 5px;
-    font: 16px;
+    font-size: 16px;
 
 }
 #result .task{
@@ -29,7 +29,7 @@ h1{
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    border-bottom: 1px solid ccc;
+    border-bottom: 1px solid #ccc;
 }
 .completed{
     text-decoration: line-through;
@@ -54,3 +54,4 @@ h1{
     cursor: pointer;
 }
 
+    
