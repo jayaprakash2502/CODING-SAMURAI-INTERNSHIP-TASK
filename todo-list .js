@@ -27,17 +27,24 @@ function showtasks(){
 
     tasklist.forEach((item,index)=>{
 
-        const today=new Date().toISOString().split('T')[0];
-        let taskclass="";
-        if(item.completed)
-            taskclass='completed';
-        else if(item.date<today)
-            taskclass='overdue';
-        else if(item.date===today)
-            taskclass='soon';
-        else
-            taskclass='upcomming'
+    const today = new Date();
+        today.setHours(0, 0, 0, 0); 
+                const taskdate = new Date(item.date);
+        taskdate.setHours(0, 0, 0, 0); 
 
+    let taskclass="";
+        if(item.completed)
+            taskclass="completed";
+        
+        else if(taskdate < today)
+            taskclass="overdue";
+        
+        else if(taskdate.getTime() === today.getTime())
+            taskclass="soon"; 
+        
+        else
+            taskclass="upcomming"; 
+        
        result.innerHTML += `
       <div class="task">
         <div>
@@ -59,7 +66,7 @@ function deletetask(index){
 }
 
 
-function tonglecompletee(){
+function togglecomplete(index){
     tasklist[index].completed=!tasklist[index].completed;
     localStorage.setItem('tasklist',JSON.stringify(tasklist));
     showtasks();
@@ -82,4 +89,5 @@ document.getElementById("darkmode").addEventListener("click", () => {
 darkmode();
 showtasks();
     
+
 
